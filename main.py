@@ -1,8 +1,8 @@
 from aiogram.utils import executor
 from config import dp
-from handler import client, extra, callback, admin
+from handler import client, extra, callback, admin, fsm_Admin_Mentor
 
-
+fsm_Admin_Mentor.register(dp)
 client.register(dp)
 callback.register(dp)
 admin.register(dp)
