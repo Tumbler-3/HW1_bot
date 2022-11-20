@@ -1,6 +1,7 @@
 import random
 from aiogram import types, Dispatcher
 from config import bot, ADMINS
+from data.data_bot import sql_random
 
 
 async def echo_square(message: types.Message):
@@ -15,4 +16,5 @@ async def echo_square(message: types.Message):
 
 
 def register(dp: Dispatcher):
+    dp.register_message_handler(sql_random, commands=['random'], commands_prefix='!/')
     dp.register_message_handler(echo_square)

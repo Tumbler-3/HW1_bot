@@ -3,6 +3,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import StatesGroup, State
 from config import ADMINS, bot
+from data.data_bot import sql_add
 from keyboards.markups import save_markup, cancel_markup
 
 
@@ -77,6 +78,7 @@ Group: {data['group']}""")
 async def yes_no(message: types.Message, state: FSMContext):
     if message.text.lower() == 'yes':
         await message.answer("Saved")
+        await sql_add(state)
         await state.finish()
     elif message.text.lower() == 'no':
         await message.answer("Didn't save")
