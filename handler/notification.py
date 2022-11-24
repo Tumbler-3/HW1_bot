@@ -20,7 +20,7 @@ async def my_dudes():
 
 
 async def it_is_wednesday():
-    aioschedule.every().thursday.at('23:49').do(my_dudes)
+    aioschedule.every().wednesday.at('13:00').do(my_dudes)
     while True:
         await aioschedule.run_pending()
         await asyncio.sleep(3)
