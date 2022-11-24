@@ -6,7 +6,7 @@ from config import bot
 
 
 async def meme(message: types.Message):
-    photos = ["photos/meme1.jpg", "photos/meme2.jpg", "photos/meme3.jpg"]
+    photos = ["photos/memes/meme1.jpg", "photos/memes/meme2.jpg", "photos/memes/meme3.jpg"]
     photo = open(random.choice(photos), 'rb')
     await bot.send_photo(message.chat.id, photo=photo)
 

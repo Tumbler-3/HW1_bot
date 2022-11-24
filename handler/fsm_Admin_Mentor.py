@@ -66,11 +66,11 @@ async def get_group(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['group'] = message.text
     await bot.send_message(message.from_user.id,
-                           f"""ID: {data['id']}
-Name: {data['name']}
-Course: {data['course']}
-Age: {data['age']}
-Group: {data['group']}""")
+                           f"ID: {data['id']}"
+                           f"Name: {data['name']}"
+                           f"Course: {data['course']}"
+                           f"Age: {data['age']}"
+                           f"Group: {data['group']}")
     await FSMRegistration.next()
     await message.answer("Do you want save it?", reply_markup=save_markup)
 
