@@ -14,6 +14,8 @@ async def latest_news(message: types.Message):
             f"{new['description']}\n\n"
             f"https://www.securitylab.ru/{new['link']}"
         )
+
+
 async def meme(message: types.Message):
     photos = ["photos/memes/meme1.jpg", "photos/memes/meme2.jpg", "photos/memes/meme3.jpg"]
     photo = open(random.choice(photos), 'rb')
