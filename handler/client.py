@@ -3,8 +3,17 @@ import time
 from aiogram import types, Dispatcher
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot
+from parser import parser_news
 
 
+async def latest_news(message: types.Message):
+    news = parser_news.parser()
+    for new in news:
+        await message.answer(
+            f"{new['headline']}\n\n"
+            f"{new['description']}\n\n"
+            f"https://www.securitylab.ru/{new['link']}"
+        )
 async def meme(message: types.Message):
     photos = ["photos/memes/meme1.jpg", "photos/memes/meme2.jpg", "photos/memes/meme3.jpg"]
     photo = open(random.choice(photos), 'rb')
@@ -55,3 +64,4 @@ def register(dp: Dispatcher):
     dp.register_message_handler(quiz1, commands=['quiz'], commands_prefix='!/')
     dp.register_message_handler(meme, commands=['meme'], commands_prefix='!/')
     dp.register_message_handler(dice, commands=['dice'], commands_prefix='!/')
+    dp.register_message_handler(latest_news, commands=['news'], commands_prefix='!/')
